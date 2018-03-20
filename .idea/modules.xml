@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fxmltableviewcsv.iml" filepath="$PROJECT_DIR$/.idea/modules/fxmltableviewcsv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fxmltableviewcsv_main.iml" filepath="$PROJECT_DIR$/.idea/modules/fxmltableviewcsv_main.iml" group="fxmltableviewcsv" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fxmltableviewcsv_test.iml" filepath="$PROJECT_DIR$/.idea/modules/fxmltableviewcsv_test.iml" group="fxmltableviewcsv" />
+    </modules>
+  </component>
+</project>
