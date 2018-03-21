@@ -1,4 +1,4 @@
-package fxmltableview;
+package fxmltableview.java;
 
 import java.net.URL;
 import java.util.ResourceBundle;

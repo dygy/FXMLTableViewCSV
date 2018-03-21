@@ -1,7 +1,10 @@
-package fxmltableview;
-import javafx.beans.property.SimpleStringProperty;
-import fxmltableview.main.Records;
+package fxmltableview.java;
+import fxmltableview.java.main.Records;
+
+import org.apache.commons.csv.CSVRecord;
+
 public class Person {
+    /*
     Records records;
     String firstName = records.getFirstname();
     String lastName = records.getLastname();
@@ -11,11 +14,24 @@ public class Person {
 
     public Person(String firstName, String lastName, String email,String status) {
 
-        public Person(String , String , String , String); {
+        public Person(String firstName, String lastName , String email, String status); {
             this(" ", " ", " "," ");
 
      }
-   }
+   }*/
+
+    String firstName;
+    String lastName;
+
+    public Person(CSVRecord csvRecord) {
+        firstName = csvRecord.get(0);
+        //....
+    }
+
+    public Person(String _firstName, String _lastName) {
+        firstName = _firstName;
+        lastName = _lastName;
+    }
 }
 
 //Records records;

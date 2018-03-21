@@ -30,14 +30,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package fxmltableview;
+package fxmltableview.java;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import fxmltableview.FXMLTableViewController;
+
+import java.util.List;
 
 public class FXMLTableView extends Application {
     
@@ -51,9 +52,15 @@ public class FXMLTableView extends Application {
     	
     	
         Pane myPane = loader.load();
-        
+
+        List<Person> l = parseCSV();
         
         FXMLTableViewController ctr = loader.getController();
+
+        for (p: l) {
+            ctr.getData().add(p);
+        }
+
     	ctr.getData().add( new Person("lol", "kek", "@@@@","active"));
     	ctr.getData().add( new Person(" ", " ", " "," "));
 
