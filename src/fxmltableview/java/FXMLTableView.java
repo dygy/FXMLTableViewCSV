@@ -37,7 +37,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FXMLTableView extends Application {
@@ -53,16 +59,13 @@ public class FXMLTableView extends Application {
     	
         Pane myPane = loader.load();
 
-        List<Person> l = parseCSV();
+        ArrayList<Person> l = parseCSV();
         
         FXMLTableViewController ctr = loader.getController();
 
-        for (p: l) {
+        for (Person p: l) {
             ctr.getData().add(p);
         }
-
-    	ctr.getData().add( new Person("lol", "kek", "@@@@","active"));
-    	ctr.getData().add( new Person(" ", " ", " "," "));
 
     	
         Scene myScene = new Scene(myPane);
@@ -75,7 +78,29 @@ public class FXMLTableView extends Application {
         
         
     }
- 
+
+    public ArrayList<Person> parseCSV() throws IOException {
+
+            Reader in = new FileReader("c:\\Users\\Dygy\\IdeaProjects\\fxmltableview1\\src\\file.csv");
+            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+            System.out.println("here");
+            ArrayList<Person> list = new ArrayList<Person>();
+            for (CSVRecord record : records) {
+                String lastName = record.get(0);
+                String firstName = record.get(1);
+                String email = record.get(2);
+                String status = record.get(3);
+                Person p = new Person(record);
+                list.add(p);
+
+                System.out.println(lastName);
+                System.out.println(firstName);
+                System.out.println(email);
+                System.out.println(status);
+            }
+     return list;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

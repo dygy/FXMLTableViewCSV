@@ -1,5 +1,5 @@
 package test1;
-import fxmltableview.java.main.Records;
+import fxmltableview.java.FXMLTableView;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Person {

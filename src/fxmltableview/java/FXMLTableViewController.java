@@ -2,14 +2,12 @@ package fxmltableview.java;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
 public class FXMLTableViewController implements Initializable {
     @FXML private TableView<Person> tableView;
     @FXML private TextField firstNameField;
