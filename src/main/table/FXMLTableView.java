@@ -1,4 +1,4 @@
-/*
+package table;/*
  * Copyright (c) 2012, 2014 Oracle and/or its affiliates.
  * All rights reserved. Use is subject to license terms.
  *
@@ -30,7 +30,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package fxmltableview.java;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -39,12 +38,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FXMLTableView extends Application {
     
@@ -52,15 +49,16 @@ public class FXMLTableView extends Application {
     public void start(Stage primaryStage) throws Exception {
         
     	primaryStage.setTitle("FXML TableView Example");
-    	
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml_tableview.fxml"));
+    	System.out.println(getClass().getResource("/"));
 
-    	
-    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("src/res/fxml_tableview.fxml"));
+
+       // getClass().getResource directory
+
         Pane myPane = loader.load();
 
         ArrayList<Person> l = parseCSV();
-        
+
         FXMLTableViewController ctr = loader.getController();
 
         for (Person p: l) {
@@ -80,8 +78,10 @@ public class FXMLTableView extends Application {
     }
 
     public ArrayList<Person> parseCSV() throws IOException {
+        String current = new java.io.File( "." ).getCanonicalPath();
+        System.out.println("Current dir:"+current);
 
-            Reader in = new FileReader("c:\\Users\\Dygy\\IdeaProjects\\fxmltableview1\\src\\file.csv");
+            Reader in = new FileReader("src/main/file.csv");
             Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
             System.out.println("here");
             ArrayList<Person> list = new ArrayList<Person>();

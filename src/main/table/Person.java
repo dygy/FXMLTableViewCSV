@@ -1,4 +1,4 @@
-package fxmltableview.java;
+package table;
 
 import org.apache.commons.csv.CSVRecord;
 
