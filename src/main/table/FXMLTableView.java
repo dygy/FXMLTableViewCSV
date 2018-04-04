@@ -49,11 +49,9 @@ public class FXMLTableView extends Application {
     public void start(Stage primaryStage) throws Exception {
         
     	primaryStage.setTitle("FXML TableView Example");
-    	System.out.println(getClass().getResource("/"));
 
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("src/res/fxml_tableview.fxml"));
-
-       // getClass().getResource directory
+    	ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        FXMLLoader loader = new FXMLLoader(classloader.getResource("fxml_tableview.fxml"));
 
         Pane myPane = loader.load();
 
@@ -81,24 +79,25 @@ public class FXMLTableView extends Application {
         String current = new java.io.File( "." ).getCanonicalPath();
         System.out.println("Current dir:"+current);
 
-            Reader in = new FileReader("src/main/file.csv");
-            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
-            System.out.println("here");
-            ArrayList<Person> list = new ArrayList<Person>();
-            for (CSVRecord record : records) {
-                String lastName = record.get(0);
-                String firstName = record.get(1);
-                String email = record.get(2);
-                String status = record.get(3);
-                Person p = new Person(record);
-                list.add(p);
+        Reader in = new FileReader("src/main/file.csv");
+        Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+        System.out.println("here");
+        ArrayList<Person> list = new ArrayList<Person>();
+        for (CSVRecord record : records) {
+            String lastName = record.get(0);
+            String firstName = record.get(1);
+            String email = record.get(2);
+            String status = record.get(3);
+            Person p = new Person(record);
+            list.add(p);
 
-                System.out.println(lastName);
-                System.out.println(firstName);
-                System.out.println(email);
-                System.out.println(status);
-            }
-     return list;
+            System.out.println(lastName);
+            System.out.println(firstName);
+            System.out.println(email);
+            System.out.println(status);
+        }
+
+        return list;
     }
 
     public static void main(String[] args) {
