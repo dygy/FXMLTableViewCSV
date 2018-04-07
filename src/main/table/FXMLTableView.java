@@ -30,7 +30,7 @@ package table;/*
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+import table.CSVWork;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,26 +42,24 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FXMLTableView extends Application {
-    
+    CSVWork model;
     @Override
+
     public void start(Stage primaryStage) throws Exception {
-        
+
     	primaryStage.setTitle("FXML TableView Example");
 
     	ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         FXMLLoader loader = new FXMLLoader(classloader.getResource("fxml_tableview.fxml"));
 
         Pane myPane = loader.load();
-
-        ArrayList<Person> l = parseCSV();
-
         FXMLTableViewController ctr = loader.getController();
 
-        for (Person p: l) {
-            ctr.getData().add(p);
-        }
+        model = new CSVWork();
+        ctr.setModel(model);
 
     	
         Scene myScene = new Scene(myPane);
@@ -73,31 +71,6 @@ public class FXMLTableView extends Application {
         
         
         
-    }
-
-    public ArrayList<Person> parseCSV() throws IOException {
-        String current = new java.io.File( "." ).getCanonicalPath();
-        System.out.println("Current dir:"+current);
-
-        Reader in = new FileReader("src/main/file.csv");
-        Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
-        System.out.println("here");
-        ArrayList<Person> list = new ArrayList<Person>();
-        for (CSVRecord record : records) {
-            String lastName = record.get(0);
-            String firstName = record.get(1);
-            String email = record.get(2);
-            String status = record.get(3);
-            Person p = new Person(record);
-            list.add(p);
-
-            System.out.println(lastName);
-            System.out.println(firstName);
-            System.out.println(email);
-            System.out.println(status);
-        }
-
-        return list;
     }
 
     public static void main(String[] args) {

@@ -30,7 +30,6 @@ public class Person {
         email = csvRecord.get(2);
         status = csvRecord.get(3);
     }
-
     public Person(String _firstName, String _lastName, String _email, String _status) {
         firstName = _firstName;
         lastName = _lastName;
