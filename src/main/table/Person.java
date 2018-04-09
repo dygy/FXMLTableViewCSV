@@ -2,6 +2,8 @@ package table;
 
 import org.apache.commons.csv.CSVRecord;
 
+import java.util.ArrayList;
+
 public class Person {
     /*
     Records records;
@@ -49,6 +51,15 @@ public class Person {
     }
     public String getStatus() {
         return  status;
+    }
+
+    public ArrayList<Object> getRecord() {
+        ArrayList<Object> record = new ArrayList<>();
+        record.add(firstName);
+        record.add(lastName);
+        record.add(email);
+        record.add(status);
+        return record;
     }
 }
 

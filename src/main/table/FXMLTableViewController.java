@@ -27,6 +27,10 @@ public class FXMLTableViewController implements Initializable {
         }
     }
 
+    public void writeModel() throws IOException {
+        model.writeCsvFile(data);
+    }
+
     @FXML private TableView<Person> tableView;
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
