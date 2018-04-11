@@ -27,10 +27,17 @@ public class Person {
     String status;
 
     public Person(CSVRecord csvRecord) {
-        firstName = csvRecord.get(0);
-        lastName = csvRecord.get(1);
-        email = csvRecord.get(2);
-        status = csvRecord.get(3);
+        csvRecord.size();
+        if ( csvRecord.size() >= 4) {
+            firstName = csvRecord.get(0);
+            lastName = csvRecord.get(1);
+            email = csvRecord.get(2);
+            status = csvRecord.get(3);
+            return;
+        }
+        if (false) {
+        return;
+        }
     }
     public Person(String _firstName, String _lastName, String _email, String _status) {
         firstName = _firstName;
