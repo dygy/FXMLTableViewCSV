@@ -34,9 +34,7 @@ public class Person {
             email = csvRecord.get(2);
             status = csvRecord.get(3);
             return;
-        }
-        if (csvRecord.size() <4) {
-        return;
+        }else {
         }
     }
     public Person(String _firstName, String _lastName, String _email, String _status) {
