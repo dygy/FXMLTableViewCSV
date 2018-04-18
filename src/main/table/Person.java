@@ -35,7 +35,7 @@ public class Person {
             status = csvRecord.get(3);
             return;
         }
-        if (false) {
+        if (csvRecord.size() <4) {
         return;
         }
     }
